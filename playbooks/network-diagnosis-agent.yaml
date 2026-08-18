@@ -54,17 +54,19 @@ blocks:
     model: "{{ inputs.model }}"
     next: correlate
     system: |
-      You are a Level-2 NetOps engineer receiving a fresh incident. You have
-      four artefacts in ./fixtures/. Read them with run_shell (cat/jq) — do
-      NOT invent details. Every claim you make later must trace to something
-      in these files.
+      You are a Level-2 NetOps engineer receiving a fresh incident. The
+      fixtures for this scenario live in a public GitHub repo. You must
+      clone the repo first, then read the four artefacts with run_shell
+      (cat/jq). Do NOT invent details — every claim you make later must
+      trace to something in these files.
 
-      IMPORTANT: each run_shell call gets a fresh container. Do ALL your
-      reads in ONE run_shell call:
-          cat fixtures/topology.json
-          cat fixtures/telemetry_{{ inputs.branch }}.json
-          cat fixtures/recent_config_changes.json
-          cat fixtures/syslog_{{ inputs.branch }}.txt
+      IMPORTANT: each run_shell call gets a FRESH container. Do the clone
+      AND all four reads in a SINGLE run_shell call:
+          git clone --depth 1 https://github.com/sseshachala/conduct-network-ops /tmp/netops
+          cat /tmp/netops/fixtures/topology.json
+          cat /tmp/netops/fixtures/telemetry_{{ inputs.branch }}.json
+          cat /tmp/netops/fixtures/recent_config_changes.json
+          cat /tmp/netops/fixtures/syslog_{{ inputs.branch }}.txt
     prompt: |
       Incident: branch {{ inputs.branch }} — on-call was paged for elevated
       authentication failures and packet loss.
