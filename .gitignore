@@ -6,3 +6,10 @@ __pycache__/
 .env
 node_modules/
 .claude/
+.booster/
+.cursorrules
+.windsurfrules
+AGENTS.md
+.mcp.json
+CLAUDE.md
+
