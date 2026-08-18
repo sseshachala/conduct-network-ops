@@ -82,14 +82,15 @@ Conduct's Guard runs at three points in the agent's execution:
 pip install --upgrade conduct-cli
 conduct login
 
-# 2. Install this playbook set (attaches to this repo)
-conduct install github:sseshachala/conduct-network-ops
+# 2. Install the playbook — the --repo flag tells Conduct which
+#    fixture repo to clone into the sandbox before block 1 runs.
+conduct install network_diagnosis_agent --repo sseshachala/conduct-network-ops
 
 # 3. Install the Guard rule
 conduct guard rules import rules/no-network-policy-modify.json
 
 # 4. Run
-conduct run network-diagnosis-agent --input branch=br42
+conduct run <agent_id_from_step_2> --input branch=br42
 ```
 
 Watch the run in the Conduct dashboard under **Runs → network-diagnosis-agent**. Each Guard verdict appears live under **Guard → Activity**.
