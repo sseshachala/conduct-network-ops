@@ -1,0 +1,65 @@
+{
+  "window_start": "2026-08-24T08:00:00Z",
+  "window_end":   "2026-08-24T08:45:00Z",
+  "source": "aruba-central + netops change-log",
+  "changes": [
+    {
+      "id": "chg-1244",
+      "ts": "2026-08-24T08:14:22Z",
+      "device": "br07-edge-01",
+      "author": "netops.lopez",
+      "ticket": "NET-8811",
+      "type": "qos_policy",
+      "summary": "Bumped voice priority queue depth from 32 to 48 (br07 only).",
+      "risk_class": "low",
+      "reversible": true
+    },
+    {
+      "id": "chg-1245",
+      "ts": "2026-08-24T08:22:07Z",
+      "device": "br13-edge-01",
+      "author": "netops.chen",
+      "ticket": "NET-8815",
+      "type": "static_route",
+      "summary": "Added floating static /24 for lab overlay 10.99.13.0/24 next-hop 10.13.0.1.",
+      "risk_class": "low",
+      "reversible": true
+    },
+    {
+      "id": "chg-1246",
+      "ts": "2026-08-24T08:31:44Z",
+      "device": "aruba-central-cluster",
+      "author": "sre.batch-job",
+      "ticket": "NET-8820",
+      "type": "firmware_stage",
+      "summary": "Staged AOS 10.13.1035 image on 4 aggregation switches (no activation).",
+      "risk_class": "informational",
+      "reversible": true
+    },
+    {
+      "id": "chg-1247",
+      "ts": "2026-08-24T08:39:11Z",
+      "device": "br42-edge-01",
+      "author": "netops.reyes",
+      "ticket": "NET-8823",
+      "type": "acl_modify",
+      "summary": "Tightened inbound ACL on ge-0/0/0 — added implicit deny before RADIUS allow rule; intended to shorten rule 47 shadowing.",
+      "risk_class": "medium",
+      "reversible": true,
+      "diff": "-  47   allow  udp  10.0.5.11/32 port 1812     radius-servers\n-  47   allow  udp  10.0.5.12/32 port 1812     radius-servers\n+  46   deny   ip   any any\n+  47   allow  udp  10.0.5.11/32 port 1812     radius-servers\n+  47   allow  udp  10.0.5.12/32 port 1812     radius-servers\n",
+      "reviewer": null,
+      "cab_approval": "not_required"
+    },
+    {
+      "id": "chg-1248",
+      "ts": "2026-08-24T08:41:03Z",
+      "device": "br42-ap-cluster",
+      "author": "sre.batch-job",
+      "ticket": "NET-8825",
+      "type": "wireless_channel_plan",
+      "summary": "Auto-tuned 5GHz channel plan; 3 APs moved to DFS channels.",
+      "risk_class": "low",
+      "reversible": true
+    }
+  ]
+}

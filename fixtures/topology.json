@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-08-24T08:00:00Z",
+  "source": "conduct-network-ops-demo (synthetic)",
+  "asn": 65042,
+  "branches": [
+    {
+      "id": "br42",
+      "name": "Branch 42 — Fort Lauderdale",
+      "site_code": "FLL-42",
+      "wan_uplink": "10.42.0.0/24",
+      "user_subnet": "10.42.10.0/24",
+      "iot_subnet": "10.42.20.0/24",
+      "voice_subnet": "10.42.30.0/24",
+      "gateway": "10.42.10.1",
+      "radius_server": "10.0.5.11",
+      "devices": [
+        {
+          "hostname": "br42-edge-01",
+          "vendor": "juniper",
+          "model": "SRX380",
+          "os": "Junos 22.4R3-S2",
+          "mgmt_ip": "10.42.0.2",
+          "role": "wan_edge",
+          "interfaces": ["ge-0/0/0", "ge-0/0/1", "xe-0/0/2", "reth0"]
+        },
+        {
+          "hostname": "br42-agg-01",
+          "vendor": "aruba",
+          "model": "CX 8320",
+          "os": "AOS-CX 10.13.1030",
+          "mgmt_ip": "10.42.0.3",
+          "role": "aggregation",
+          "interfaces": ["1/1/1", "1/1/2", "1/1/47", "1/1/48"]
+        },
+        {
+          "hostname": "br42-acc-01",
+          "vendor": "aruba",
+          "model": "CX 6300M",
+          "os": "AOS-CX 10.12.1000",
+          "mgmt_ip": "10.42.0.4",
+          "role": "access",
+          "interfaces": ["1/1/1-1/1/48", "1/1/49", "1/1/50"]
+        },
+        {
+          "hostname": "br42-ap-cluster",
+          "vendor": "aruba",
+          "model": "AP-635",
+          "os": "AOS 10.5.1.2",
+          "count": 12,
+          "controller": "aruba-central",
+          "role": "wireless"
+        }
+      ]
+    },
+    {
+      "id": "br07",
+      "name": "Branch 07 — Miami",
+      "site_code": "MIA-07",
+      "wan_uplink": "10.7.0.0/24",
+      "user_subnet": "10.7.10.0/24",
+      "gateway": "10.7.10.1",
+      "radius_server": "10.0.5.11",
+      "devices": [
+        {"hostname": "br07-edge-01", "vendor": "juniper", "model": "SRX380", "mgmt_ip": "10.7.0.2", "role": "wan_edge"}
+      ]
+    },
+    {
+      "id": "br13",
+      "name": "Branch 13 — Tampa",
+      "site_code": "TPA-13",
+      "wan_uplink": "10.13.0.0/24",
+      "user_subnet": "10.13.10.0/24",
+      "gateway": "10.13.10.1",
+      "radius_server": "10.0.5.11",
+      "devices": [
+        {"hostname": "br13-edge-01", "vendor": "juniper", "model": "SRX380", "mgmt_ip": "10.13.0.2", "role": "wan_edge"}
+      ]
+    }
+  ],
+  "core": {
+    "site_code": "MIA-CORE",
+    "radius_cluster": ["10.0.5.11", "10.0.5.12"],
+    "aaa_type": "aruba-clearpass",
+    "clearpass_version": "6.11.4"
+  }
+}

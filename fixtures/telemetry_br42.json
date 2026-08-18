@@ -1,0 +1,34 @@
+{
+  "branch": "br42",
+  "device": "br42-agg-01",
+  "window_start": "2026-08-24T08:30:00Z",
+  "window_end":   "2026-08-24T08:45:00Z",
+  "sample_interval_sec": 30,
+  "notes": "Uplink packet loss + auth failures started climbing ~08:41. Baseline latency 12-18ms; spikes to 220ms during retransmit bursts.",
+  "samples": [
+    {"ts": "2026-08-24T08:30:12Z", "if": "1/1/47", "rx_pps": 4127, "tx_pps": 3980, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 14.2, "auth_success": 82, "auth_fail": 0},
+    {"ts": "2026-08-24T08:30:42Z", "if": "1/1/47", "rx_pps": 4210, "tx_pps": 4001, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 13.8, "auth_success": 91, "auth_fail": 0},
+    {"ts": "2026-08-24T08:31:12Z", "if": "1/1/47", "rx_pps": 4088, "tx_pps": 3922, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 15.1, "auth_success": 88, "auth_fail": 1},
+    {"ts": "2026-08-24T08:31:42Z", "if": "1/1/47", "rx_pps": 4302, "tx_pps": 4110, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 12.9, "auth_success": 94, "auth_fail": 0},
+    {"ts": "2026-08-24T08:32:12Z", "if": "1/1/47", "rx_pps": 4198, "tx_pps": 4033, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 14.7, "auth_success": 79, "auth_fail": 0},
+    {"ts": "2026-08-24T08:33:12Z", "if": "1/1/47", "rx_pps": 4177, "tx_pps": 4012, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 13.4, "auth_success": 86, "auth_fail": 2},
+    {"ts": "2026-08-24T08:34:12Z", "if": "1/1/47", "rx_pps": 4241, "tx_pps": 4067, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 14.0, "auth_success": 90, "auth_fail": 1},
+    {"ts": "2026-08-24T08:35:12Z", "if": "1/1/47", "rx_pps": 4165, "tx_pps": 3995, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 15.5, "auth_success": 84, "auth_fail": 0},
+    {"ts": "2026-08-24T08:36:42Z", "if": "1/1/47", "rx_pps": 4290, "tx_pps": 4088, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 12.7, "auth_success": 88, "auth_fail": 1},
+    {"ts": "2026-08-24T08:38:12Z", "if": "1/1/47", "rx_pps": 4212, "tx_pps": 4022, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 14.9, "auth_success": 91, "auth_fail": 0},
+    {"ts": "2026-08-24T08:39:42Z", "if": "1/1/47", "rx_pps": 4198, "tx_pps": 4009, "drops": 0,   "loss_pct": 0.0,  "latency_ms": 13.6, "auth_success": 87, "auth_fail": 3},
+    {"ts": "2026-08-24T08:40:42Z", "if": "1/1/47", "rx_pps": 4322, "tx_pps": 3812, "drops": 4,   "loss_pct": 0.1,  "latency_ms": 22.8, "auth_success": 61, "auth_fail": 14},
+    {"ts": "2026-08-24T08:41:12Z", "if": "1/1/47", "rx_pps": 4118, "tx_pps": 3401, "drops": 28,  "loss_pct": 2.7,  "latency_ms": 48.3, "auth_success": 24, "auth_fail": 41},
+    {"ts": "2026-08-24T08:41:42Z", "if": "1/1/47", "rx_pps": 3987, "tx_pps": 3122, "drops": 71,  "loss_pct": 5.2,  "latency_ms": 87.1, "auth_success": 11, "auth_fail": 62},
+    {"ts": "2026-08-24T08:42:12Z", "if": "1/1/47", "rx_pps": 3841, "tx_pps": 2988, "drops": 104, "loss_pct": 7.1,  "latency_ms": 132.6,"auth_success": 6,  "auth_fail": 78},
+    {"ts": "2026-08-24T08:42:42Z", "if": "1/1/47", "rx_pps": 3720, "tx_pps": 2801, "drops": 143, "loss_pct": 9.4,  "latency_ms": 187.2,"auth_success": 4,  "auth_fail": 82},
+    {"ts": "2026-08-24T08:43:12Z", "if": "1/1/47", "rx_pps": 3688, "tx_pps": 2711, "drops": 168, "loss_pct": 10.8, "latency_ms": 218.7,"auth_success": 3,  "auth_fail": 89},
+    {"ts": "2026-08-24T08:43:42Z", "if": "1/1/47", "rx_pps": 3702, "tx_pps": 2697, "drops": 174, "loss_pct": 11.2, "latency_ms": 224.1,"auth_success": 2,  "auth_fail": 91},
+    {"ts": "2026-08-24T08:44:12Z", "if": "1/1/47", "rx_pps": 3671, "tx_pps": 2682, "drops": 181, "loss_pct": 11.7, "latency_ms": 231.5,"auth_success": 3,  "auth_fail": 87},
+    {"ts": "2026-08-24T08:44:42Z", "if": "1/1/47", "rx_pps": 3651, "tx_pps": 2665, "drops": 189, "loss_pct": 12.1, "latency_ms": 238.9,"auth_success": 2,  "auth_fail": 93}
+  ],
+  "radius_rtt_ms": {
+    "10.0.5.11": {"pre_08_41": 8.4, "post_08_41": 4823.0, "state_post_08_41": "timeout"},
+    "10.0.5.12": {"pre_08_41": 9.1, "post_08_41": 4811.0, "state_post_08_41": "timeout"}
+  }
+}

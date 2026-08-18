@@ -1,0 +1,8 @@
+.DS_Store
+*.log
+remediation.log
+__pycache__/
+.venv/
+.env
+node_modules/
+.claude/

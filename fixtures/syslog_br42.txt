@@ -1,0 +1,17 @@
+<190>1 2026-08-24T08:30:12.412Z br42-agg-01 aruba-cx - LLDP-INFO - Neighbor detected on port 1/1/47 from br42-edge-01 xe-0/0/2
+<189>1 2026-08-24T08:39:11.883Z br42-edge-01 rpd - CHANGE-COMMIT - user netops.reyes committed configuration [ticket NET-8823, rollback-id chg-1247]
+<190>1 2026-08-24T08:39:12.104Z br42-edge-01 rpd - ACL-UPDATE - filter inbound-ge000 applied to ge-0/0/0, 3 terms modified
+<187>1 2026-08-24T08:40:44.221Z br42-agg-01 aruba-cx - RADIUS-TIMEOUT - No response from 10.0.5.11 after 5 retries (client 10.42.10.87, calling-station 4c-32-75-af-11-08)
+<187>1 2026-08-24T08:40:52.014Z br42-agg-01 aruba-cx - RADIUS-TIMEOUT - No response from 10.0.5.12 after 5 retries (client 10.42.10.204)
+<186>1 2026-08-24T08:41:03.771Z br42-ap-cluster aruba-ap - DOT1X-AUTH-FAIL - EAP-TLS failure for 8c-85-90-04-12-cc — no server response
+<186>1 2026-08-24T08:41:07.339Z br42-ap-cluster aruba-ap - DOT1X-AUTH-FAIL - EAP-TLS failure for 4c-32-75-af-11-08 — no server response
+<187>1 2026-08-24T08:41:12.008Z br42-agg-01 aruba-cx - IF-DROPS - Interface 1/1/47 tail-drops 28 in last 30s, queue depth 0.8
+<186>1 2026-08-24T08:41:22.114Z br42-ap-cluster aruba-ap - DOT1X-AUTH-FAIL - EAP-TLS failure for 3c-06-30-77-2d-91 — no server response
+<187>1 2026-08-24T08:41:45.552Z br42-edge-01 pfe - FLOW-DENY - inbound-ge000/rule-46 denied 10.0.5.11.1812 -> 10.42.0.3.32771 udp
+<187>1 2026-08-24T08:41:45.554Z br42-edge-01 pfe - FLOW-DENY - inbound-ge000/rule-46 denied 10.0.5.12.1812 -> 10.42.0.3.32774 udp
+<187>1 2026-08-24T08:42:02.881Z br42-edge-01 pfe - FLOW-DENY - inbound-ge000/rule-46 denied 10.0.5.11.1812 -> 10.42.0.3.32780 udp
+<186>1 2026-08-24T08:42:14.229Z br42-ap-cluster aruba-ap - CLIENT-DEAUTH - de-authenticated 12 clients (reason: 802.1X server unreachable)
+<187>1 2026-08-24T08:42:33.014Z br42-agg-01 aruba-cx - IF-DROPS - Interface 1/1/47 tail-drops 143 in last 30s, queue depth 0.94
+<187>1 2026-08-24T08:43:12.006Z br42-agg-01 aruba-cx - IF-DROPS - Interface 1/1/47 tail-drops 168 in last 30s, queue depth 0.97
+<187>1 2026-08-24T08:44:12.201Z br42-agg-01 aruba-cx - IF-DROPS - Interface 1/1/47 tail-drops 181 in last 30s, queue depth 0.98
+<184>1 2026-08-24T08:44:44.887Z aruba-central alert - PAGE - Branch br42 auth-failure-rate 96% > 30% threshold for 3 min, paging on-call
