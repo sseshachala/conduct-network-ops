@@ -1,0 +1,21 @@
+// no-network-policy-modify
+// Autonomous agents may not modify security-sensitive network configuration
+// (ACL, firewall, routing policy, RADIUS/AAA). Reversible operational actions
+// (QoS, service restart, logging) remain allowed. Policy changes must go
+// through human approval per the Level-5 autonomy tier.
+
+@id("no-network-policy-modify")
+@description("Block agent writes to security-sensitive network configuration (ACL, firewall, routing policy, RADIUS/AAA).")
+@advice("block")
+@severity("high")
+@compliance("SOC2:CC6.1, ISO_42001:6.1")
+@message("Blocked: this action would modify a security-sensitive network policy. Autonomous agents can propose the change and log the recommendation, but the commit must be approved by a human (Level 5 in the autonomy hierarchy).")
+@guidance("Write the recommendation to remediation.log and page the on-call engineer. If this is a genuine emergency, an authorized operator can approve the change in the Conduct console.")
+forbid (
+    principal is Agent,
+    action in [Action::"Bash", Action::"run_shell"],
+    resource
+)
+when {
+    context.prompt matches "(set|edit|delete)\\s+(firewall|security|policy-options|routing-instances|access-list|ip access-list)|(config(ure)?\\s+(t|terminal))|(commit\\s+confirmed)|>\\s*(fixtures/)?recent_config_changes\\.json|acl_modify|firewall_policy|bgp_policy|radius_config"
+};
