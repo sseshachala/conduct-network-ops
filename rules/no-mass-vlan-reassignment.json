@@ -1,0 +1,41 @@
+{
+  "rule_id": "no-mass-vlan-reassignment",
+  "pack": "conduct-network-ops",
+  "version": "0.2.1",
+  "action": "block",
+  "severity": "high",
+  "surface": ["hook", "mcp", "runtime"],
+  "description": "Autonomous agents may not reassign VLAN membership across many ports at once — interface ranges, port-access role rebinds, or scripted loops. Single-port moves stay allowed; broadcast-scope changes require human approval to prevent an agent from splitting a floor or a data center off the network.",
+  "match": {
+    "tool_name": ["Bash", "run_shell", "shell"],
+    "any": [
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\binterface\\s+range\\b[^\\n]*\\bvlan\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\binterface\\s+range\\b[^\\n]*(\\\\n|\\n)[^\\n]*switchport\\s+access\\s+vlan\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\bset\\s+interfaces\\s+ge-[^\\s]*\\s+unit\\s+\\d+\\s+family\\s+ethernet-switching\\s+vlan\\b[^\\n]*\\bmembers\\b[^\\n]*,"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "for\\s+\\w+\\s+in\\s+[^\\n]+;\\s*do[^\\n]*(vlan|switchport)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\bport-access\\s+role\\s+\\S+\\s+vlan\\b"
+      }
+    ]
+  },
+  "message": "Blocked: this action would reassign VLAN membership across multiple ports at once. Broadcast-scope VLAN moves must be approved by a human — agents can propose the plan and per-port sequence but cannot commit the bulk change.",
+  "guidance": "Break the change into per-port steps, write the sequenced plan to remediation.log with affected ports and blast radius, and open a change ticket. An authorized operator can approve the full bulk change in the Conduct console."
+}

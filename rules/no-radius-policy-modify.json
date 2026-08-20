@@ -1,0 +1,41 @@
+{
+  "rule_id": "no-radius-policy-modify",
+  "pack": "conduct-network-ops",
+  "version": "0.2.1",
+  "action": "block",
+  "severity": "high",
+  "surface": ["hook", "mcp", "runtime"],
+  "description": "Autonomous agents may not mutate RADIUS / AAA / ClearPass identity policy — service enforcement, role mapping, authentication method changes. Agents can propose the change and log the recommendation; the commit must be approved by a human (Level 5 autonomy).",
+  "match": {
+    "tool_name": ["Bash", "run_shell", "shell"],
+    "any": [
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "(set|delete|edit)\\s+(access|system)\\s+(radius-server|profile|aaa)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\b(aaa|radius-server)\\s+(authentication|authorization|accounting|server-group|host)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\bport-access\\s+(role|policy)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "(POST|PUT|PATCH|DELETE)\\s+[^\\s]*/api/(enforcement-policy|enforcement-profile|service|role-mapping|network-device)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "curl\\s+[^\\n]*-X\\s+(POST|PUT|PATCH|DELETE)[^\\n]*/api/(enforcement-policy|enforcement-profile|service|role-mapping|network-device)\\b"
+      }
+    ]
+  },
+  "message": "Blocked: this action would modify RADIUS / AAA / ClearPass identity policy. Identity enforcement changes must be approved by a human — an agent can log the recommendation but cannot commit.",
+  "guidance": "Write the recommended RADIUS/AAA change to remediation.log with the target device, current policy diff, and rationale, then page the identity on-call. An authorized operator can commit the change from the Conduct console."
+}

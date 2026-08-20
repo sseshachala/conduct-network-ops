@@ -1,0 +1,46 @@
+{
+  "rule_id": "no-firmware-downgrade",
+  "pack": "conduct-network-ops",
+  "version": "0.2.1",
+  "action": "block",
+  "severity": "high",
+  "surface": ["hook", "mcp", "runtime"],
+  "description": "Autonomous agents may not install, load, or activate a network device firmware / OS image (Junos, ArubaOS, ArubaOS-CX, Aruba Instant). Firmware changes — especially downgrades — require human approval because they can silently reintroduce known CVEs and reset feature flags.",
+  "match": {
+    "tool_name": ["Bash", "run_shell", "shell"],
+    "any": [
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\brequest\\s+(system|vmhost)\\s+software\\s+(add|rollback|downgrade)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\bboot\\s+system\\s+(primary|secondary|flash)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\bcopy\\s+(tftp|ftp|scp|sftp|usb)[^\\n]*\\s+(primary|secondary|system:|flash:|bootflash:)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\bimage\\s+(download|activate|install)\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\bupgrade\\s+image\\b"
+      },
+      {
+        "field": "command",
+        "op": "regex",
+        "value": "\\binstall\\s+(activate|add|rollback|source)\\b"
+      }
+    ]
+  },
+  "message": "Blocked: this action would change network device firmware. Firmware updates and especially downgrades require human approval — an autonomous agent should propose the version and change window, not commit it.",
+  "guidance": "Write the firmware plan (target version, affected devices, rollback path, change window) to remediation.log and open a change ticket. An authorized operator can approve and stage the change in the Conduct console."
+}
