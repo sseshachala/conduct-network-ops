@@ -1,0 +1,28 @@
+{
+  "id": "no-dns-exfil",
+  "persona": "agent",
+  "non_overridable": false,
+  "description": "Block DNS lookups with unusually long encoded subdomain labels (base64 or hex shape). DNS tunneling is the standard fallback for exfiltration after HTTP is blocked \u2014 data is smuggled byte-by-byte through subdomain lookups.",
+  "match_tool": "shell",
+  "match_pattern": "(?:nslookup|dig|host|drill)\\s+[A-Za-z0-9+/=_-]{40,}",
+  "action": "block",
+  "message": "Blocked: DNS lookup with a 40+ character encoded label detected. This is the DNS tunneling pattern used to exfiltrate data one query at a time after HTTP exfil is blocked. Legitimate DNS lookups do not use encoded subdomain labels.",
+  "severity": "high",
+  "frameworks": ["SOC2:CC6.7", "ISO_42001:6.1"],
+  "tag": "exfil",
+  "enforcement": {
+    "version": 1,
+    "proxy": "not_supported",
+    "hook": "conditional",
+    "mcp": "conditional",
+    "runtime": "conditional",
+    "guarantee": "Blocks DNS lookups with encoded-looking labels on hook + runtime surfaces.",
+    "requires": [
+      "Pre-tool hook installed for the calling AI tool, OR conduct runtime evaluation active for brain block tool_use"
+    ],
+    "known_limitations": [
+      "Cannot inspect DNS over HTTPS (DoH) or DNS over TLS (DoT) traffic",
+      "May false-positive on legitimate long service discovery labels"
+    ]
+  }
+}
