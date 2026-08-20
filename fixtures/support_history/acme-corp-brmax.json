@@ -1,0 +1,53 @@
+{
+  "customer_id": "acme-corp-brmax",
+  "customer_name": "ACME Corp",
+  "tier": "enterprise",
+  "generated_at": "2026-08-24T00:00:00Z",
+  "recent_tickets": [
+    {
+      "ticket_id": "SUP-42-000",
+      "date": "2026-08-15T14:22:11Z",
+      "subject": "New employee onboarding — WiFi access for 3 people",
+      "priority": "P3",
+      "resolution": "Added 3 users to Aruba ClearPass EAP-TLS enrollment, resolved by end of day.",
+      "handled_by": "support-tier-1"
+    },
+    {
+      "ticket_id": "SUP-38-041",
+      "date": "2026-07-22T09:47:03Z",
+      "subject": "VPN slow after office move",
+      "priority": "P2",
+      "resolution": "Adjusted QoS profile on br38-edge-01, tuned WAN queue depths. Resolved 4h.",
+      "handled_by": "support-tier-2"
+    },
+    {
+      "ticket_id": "SUP-38-039",
+      "date": "2026-06-14T11:03:29Z",
+      "subject": "Conference room display can't reach print server",
+      "priority": "P3",
+      "resolution": "VLAN misconfig on branch switch; corrected in nightly change window.",
+      "handled_by": "support-tier-1"
+    },
+    {
+      "ticket_id": "SUP-38-011",
+      "date": "2026-04-02T15:44:52Z",
+      "subject": "Multiple laptops getting 802.1X timeout intermittently",
+      "priority": "P2",
+      "resolution": "Root cause = expired RADIUS server cert. Re-enrolled ClearPass CA. Resolved 2h.",
+      "handled_by": "support-tier-2"
+    },
+    {
+      "ticket_id": "SUP-38-005",
+      "date": "2026-02-19T08:31:17Z",
+      "subject": "Firmware upgrade window request for br38 aggregation switches",
+      "priority": "P4",
+      "resolution": "Scheduled maintenance window, upgrade completed, no incidents.",
+      "handled_by": "change-management"
+    }
+  ],
+  "risk_signals": {
+    "outstanding_credentials_verification_requests": 0,
+    "prior_prompt_injection_incidents": 0,
+    "flagged_by_soc": false
+  }
+}
